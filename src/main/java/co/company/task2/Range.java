@@ -67,78 +67,23 @@ public class Range<T> implements Set<T> {
     }
 
     public static Range<Integer> of(Integer begin, Integer end) {
-        Range<Integer> range = new Range<>();
-
-        if (begin.compareTo(end) == 0) {
-            return range;
-        }
-
-        while (begin.compareTo(end) <= 0) {
-            range.add(begin);
-            begin++;
-        }
-
-        return range;
+        return of(begin, end, param -> param + 1);
     }
 
     public static Range<Byte> of(Byte begin, Byte end) {
-        Range<Byte> range = new Range<>();
-
-        if (begin.compareTo(end) == 0) {
-            return range;
-        }
-
-        while (begin.compareTo(end) <= 0) {
-            range.add(begin);
-            begin++;
-        }
-
-        return range;
+        return of(begin, end, param -> (byte) (param + 1));
     }
 
     public static Range<Short> of(Short begin, Short end) {
-        Range<Short> range = new Range<>();
-
-        if (begin.compareTo(end) == 0) {
-            return range;
-        }
-
-        while (begin.compareTo(end) <= 0) {
-            range.add(begin);
-            begin++;
-        }
-
-        return range;
+        return of(begin, end, param -> (short) (param + 1));
     }
 
     public static Range<Float> of(Float begin, Float end) {
-        Range<Float> range = new Range<>();
-
-        if (begin.compareTo(end) == 0) {
-            return range;
-        }
-
-        while (begin.compareTo(end) <= 0) {
-            range.add(begin);
-            begin = begin + 0.1f;
-        }
-
-        return range;
+        return of(begin, end, param -> param + 0.1f);
     }
 
     public static Range<Double> of(Double begin, Double end) {
-        Range<Double> range = new Range<>();
-
-        if (begin.compareTo(end) == 0) {
-            return range;
-        }
-
-        while (begin.compareTo(end) <= 0) {
-            range.add(begin);
-            begin = begin + 0.1f;
-        }
-
-        return range;
+        return of(begin, end, param -> param + 0.1);
     }
 
     public static <T extends Comparable> Range<T> of(T begin, T end, Function<T, T> i) {
